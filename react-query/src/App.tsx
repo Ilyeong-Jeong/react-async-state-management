@@ -1,23 +1,10 @@
-import { useEffect, useState } from 'react'
-
-import API from './api';
+import { useGetRest } from './query';
 
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await API.getTestRestData();
-        console.log(data.data);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, []);
+  const restContext = useGetRest();
 
   return (
     <div className="App">
@@ -25,31 +12,13 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
+          {restContext.isLoading ? 'Loading' : 'Not loading'}
         </p>
         <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
+          {restContext.isSuccess ? 'Success' : 'Not Success'}
         </p>
         <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
+          {restContext.data.data.map((v) => (<div>{v.first_name}</div>))}
         </p>
       </header>
     </div>
