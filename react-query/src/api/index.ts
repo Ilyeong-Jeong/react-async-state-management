@@ -1,11 +1,8 @@
+import { AxiosPromise } from 'axios';
 import { httpClient } from "@/http";
 
-class API {
-  static baseURL = import.meta.env.VITE_BASE_URL;
-
-  static getRestData() {
-    return httpClient.get(`${API.baseURL}/api/users`);
-  } 
+export function getRestData(): AxiosPromise<any> {
+  return httpClient.get(
+    `${import.meta.env.VITE_BASE_URL}/api/users`,
+  );
 }
-
-export default API;
