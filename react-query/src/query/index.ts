@@ -15,16 +15,16 @@ const initialUserData: UserData = {
 }
 
 export const useGetUsers = () => {
-  const context = useQuery<UserData, Error>('users', async () => {
+  const context = useQuery<UserData, Error>(['users'], async () => {
     const result = await getUserData();
     return result.data;
   }, {
-    placeholderData: () => initialUserData,
+    placeholderData: initialUserData,
   });
 
   return context;
 };
 
 export const useUsersContext = () => {
-  return useQueryClient().getQueryState<UserData>('users')!;
+  return useQueryClient().getQueryState<UserData>(['users'])!;
 };

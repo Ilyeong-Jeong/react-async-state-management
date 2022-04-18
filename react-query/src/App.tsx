@@ -20,7 +20,10 @@ function App() {
           {restContext.isSuccess ? 'Success' : 'Not Success'}
         </p>
         <div>
-          {restContext.data && restContext.data.data.map((v) => (<p key={v.id}>{v.first_name}</p>))}
+          {restContext.data!.data.map((v) => (<span key={v.id}>{v.first_name}</span>))}
+        </div>
+        <div>
+          {useUsersContext().data! && useUsersContext().data!.data.map((v) => (<span key={v.id}>{v.first_name}</span>))}
         </div>
       </header>
     </div>
