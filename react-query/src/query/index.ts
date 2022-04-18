@@ -1,15 +1,30 @@
 import { useQuery, useQueryClient } from 'react-query';
-import { getRestData } from '@/api';
+import { getUserData } from '@/api';
+import { UserData } from '@/interface';
 
-export const useGetRest = () => {
-  const context = useQuery<any, Error>('rest', async () => {
-    const result = await getRestData();
+const initialUserData: UserData = {
+  data: [],
+  page: 0,
+  per_page: 0,
+  total: 0,
+  total_pages: 0,
+  support: {
+    url: '',
+    text: '',
+  }
+}
+
+export const useGetUsers = () => {
+  const context = useQuery<UserData, Error>('users', async () => {
+    const result = await getUserData();
     return result.data;
+  }, {
+    placeholderData: () => initialUserData,
   });
 
   return context;
 };
 
-export const useRestContext = () => {
-  return useQueryClient().getQueryState<any>('rest')!;
+export const useUsersContext = () => {
+  return useQueryClient().getQueryState<UserData>('users')!;
 };

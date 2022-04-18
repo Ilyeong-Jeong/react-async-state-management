@@ -1,10 +1,12 @@
-import { useGetRest } from './query';
+import { useGetUsers, useUsersContext } from './query';
 
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
-  const restContext = useGetRest();
+  const restContext = useGetUsers();
+  console.log(restContext);
+  console.log(useUsersContext());
 
   return (
     <div className="App">
@@ -17,9 +19,9 @@ function App() {
         <p>
           {restContext.isSuccess ? 'Success' : 'Not Success'}
         </p>
-        <p>
-          {restContext.data.data.map((v) => (<div>{v.first_name}</div>))}
-        </p>
+        <div>
+          {restContext.data && restContext.data.data.map((v) => (<p key={v.id}>{v.first_name}</p>))}
+        </div>
       </header>
     </div>
   )
