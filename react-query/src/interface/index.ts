@@ -17,3 +17,9 @@ export interface User {
       text: string;
     }
   }
+
+  export interface UserUpdateData {
+    name: string;
+    job: string;
+    updatedAt?: string;
+  }

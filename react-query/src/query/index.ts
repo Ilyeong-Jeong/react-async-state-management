@@ -1,6 +1,6 @@
-import { useQuery, useQueryClient } from 'react-query';
-import { getUserData } from '@/api';
-import { UserData } from '@/interface';
+import { useQuery, useQueryClient, useMutation } from 'react-query';
+import { getUserData, updateUserData } from '@/api';
+import { UserData, UserUpdateData } from '@/interface';
 
 const initialUserData: UserData = {
   data: [],
@@ -27,4 +27,21 @@ export const useGetUsers = () => {
 
 export const useUsersContext = () => {
   return useQueryClient().getQueryState<UserData>(['users'])!;
+};
+
+export const useUpdateUsers = () => {
+  const queryClient = useQueryClient();
+
+  const context = useMutation(
+    async (param: UserUpdateData) => {
+      await updateUserData(param);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['users']);
+      },
+    },
+  );
+
+  return context;
 };

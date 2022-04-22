@@ -1,12 +1,21 @@
-import { useGetUsers, useUsersContext } from './query';
+import { useGetUsers, useUsersContext, useUpdateUsers } from './query';
+import { UserUpdateData } from '@/interface';
 
 import logo from './logo.svg'
 import './App.css'
 
 function App() {
   const restContext = useGetUsers();
-  console.log(restContext);
-  console.log(useUsersContext());
+  const updateUsersMutation = useUpdateUsers();
+
+  const mutationClick = () => {
+    const param = {
+      name: "morpheus",
+      job: "zion resident"
+    } as UserUpdateData;
+
+    updateUsersMutation.mutate(param);
+  };
 
   return (
     <div className="App">
@@ -24,6 +33,9 @@ function App() {
         </div>
         <div>
           {useUsersContext().data! && useUsersContext().data!.data.map((v) => (<span key={v.id}>{v.first_name}</span>))}
+        </div>
+        <div>
+          <button onClick={() => mutationClick}>mutation</button>
         </div>
       </header>
     </div>
