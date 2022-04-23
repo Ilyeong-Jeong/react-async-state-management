@@ -1,3 +1,4 @@
+import React from 'react';
 import { useGetUsers, useUsersContext, useUpdateUsers } from './query';
 import { UserUpdateData } from '@/interface';
 
@@ -31,11 +32,11 @@ function App() {
         <div>
           {restContext.data!.data.map((v) => (<span key={v.id}>{v.first_name}</span>))}
         </div>
-        <div>
+        {/* <div>
           {useUsersContext().data! && useUsersContext().data!.data.map((v) => (<span key={v.id}>{v.first_name}</span>))}
-        </div>
+        </div> */}
         <div>
-          <button onClick={() => mutationClick}>mutation</button>
+          <button onClick={() => mutationClick()}>mutation</button>
         </div>
       </header>
     </div>
