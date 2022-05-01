@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import logger from 'redux-logger';
-
-const reducer = {};
+import reducer from './reducer';
 
 export const store = configureStore({
   reducer: reducer,
-  middleware: [logger],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(logger),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
