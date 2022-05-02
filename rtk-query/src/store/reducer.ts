@@ -1,7 +1,9 @@
-import appSlice, { AppState } from './appSlice';
+import appSlice, { AppState } from '@/services/appSlice';
+import { appApi } from '@/services/api';
 
 export default {
-  app: appSlice,
+  // app: appSlice,
+  [appApi.reducerPath]: appApi.reducer,
 };
   
 export interface RootState {
