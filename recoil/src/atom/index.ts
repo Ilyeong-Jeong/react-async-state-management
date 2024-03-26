@@ -1,4 +1,10 @@
-import { atom, selector, selectorFamily } from "recoil";
+import { atom, atomFamily, selector, selectorFamily } from "recoil";
+
+interface ToDoItem {
+  id: string;
+  title: string;
+  desc: string;
+}
 
 export const countState = atom({
   key: 'countState',
@@ -16,19 +22,6 @@ export const recoilStar = selector({
   }
 });
 
-// export const projectStar = selector({
-//   key: 'project/star',
-//   get: (path) => async () => {
-//     if (!path) return '...';
-
-//     const response = await fetch(
-//       `https://api.github.com/repos/${path}`
-//     );
-//     const projectInfo = await response.json();
-//     return projectInfo.stargazers_count;
-//   }
-// });
-
 export const projectStar = selectorFamily({
   key: 'project/star',
   get: (path: string) => async () => {
@@ -41,3 +34,17 @@ export const projectStar = selectorFamily({
     return projectInfo.stargazers_count;
   }
 });
+
+export const todoList = atom<ToDoItem[]>({
+  key: 'todoList',
+  default: [],
+});
+
+export const todoItemFamily = atomFamily<ToDoItem, string>({
+  key: 'todoItemFamily',
+  default: (id) => ({
+    id,
+    title: 'temp',
+    desc: 'desc',
+  })
+})

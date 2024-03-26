@@ -6,6 +6,8 @@ import { countState } from './atom'
 import TestPage from './TestPage'
 import AsyncComponent from './AsyncComponent'
 import MultiAsyncComponent from './MultiAsyncComponent'
+import TodoList from './TodoList'
+import AddTodoList from './AddTodoList'
 
 function App() {
   const [count, setCount] = useRecoilState(countState);
@@ -35,6 +37,8 @@ function App() {
       <TestPage />
       <AsyncComponent />
       <MultiAsyncComponent />
+      <TodoList />
+      <AddTodoList />
     </>
   )
 }
