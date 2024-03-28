@@ -6,9 +6,15 @@ interface ToDoItem {
   desc: string;
 }
 
-export const countState = atom({
+export const countState = atom<number>({
   key: 'countState',
   default: 0,
+});
+
+export const countSelector = selector<number>({
+  key: "countSelector",
+  get: ({ get }) => get(countState) * 2,
+  set: ({ set }, newValue) => set(countState, newValue as number / 2),
 });
 
 export const recoilStar = selector({

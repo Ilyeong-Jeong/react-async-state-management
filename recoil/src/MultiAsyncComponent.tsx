@@ -1,4 +1,3 @@
-// import { useRecoilValue } from "recoil";
 import { useRecoilValueLoadable } from "recoil";
 import { projectStar } from "./atom";
 import { useState } from "react";
@@ -7,7 +6,6 @@ function MultiAsyncComponent() {
   const [path, setPath] = useState("");
   // const starCount = useRecoilValue(projectStar(path));
   const starLoadable = useRecoilValueLoadable(projectStar(path));
-  console.log(starLoadable);
   
   return (
     <div>
@@ -18,6 +16,7 @@ function MultiAsyncComponent() {
         <option value="facebookexperimental/Recoil">Recoil</option>
       </select>
       <br />
+      {/* {starCount} */}
       {starLoadable.state === 'hasValue' && <>Stars: {starLoadable.contents}</>}
       {starLoadable.state === 'loading' && <div>loading!!!</div>}
     </div>
