@@ -1,5 +1,5 @@
-import { useRecoilValue } from "recoil";
-import { recoilStar } from "./atom";
+import { useRecoilValue } from 'recoil';
+import { recoilStar } from './atom';
 
 function AsyncComponent() {
   const starCount = useRecoilValue(recoilStar);

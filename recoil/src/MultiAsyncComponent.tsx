@@ -1,12 +1,12 @@
-import { useRecoilValueLoadable } from "recoil";
-import { projectStar } from "./atom";
-import { useState } from "react";
+import { useRecoilValueLoadable } from 'recoil';
+import { projectStar } from './atom';
+import { useState } from 'react';
 
 function MultiAsyncComponent() {
-  const [path, setPath] = useState("");
+  const [path, setPath] = useState('');
   // const starCount = useRecoilValue(projectStar(path));
   const starLoadable = useRecoilValueLoadable(projectStar(path));
-  
+
   return (
     <div>
       MultiAsyncComponent

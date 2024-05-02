@@ -1,13 +1,13 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { useRecoilState } from 'recoil'
-import { countState } from './atom'
-import TestPage from './TestPage'
-import AsyncComponent from './AsyncComponent'
-import MultiAsyncComponent from './MultiAsyncComponent'
-import TodoList from './TodoList'
-import AddTodoList from './AddTodoList'
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { useRecoilState } from 'recoil';
+import { countState } from './atom';
+import TestPage from './TestPage';
+import AsyncComponent from './AsyncComponent';
+import MultiAsyncComponent from './MultiAsyncComponent';
+import TodoList from './TodoList';
+import AddTodoList from './AddTodoList';
 
 function App() {
   const [count, setCount] = useRecoilState(countState);
@@ -40,7 +40,7 @@ function App() {
       <TodoList />
       <AddTodoList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

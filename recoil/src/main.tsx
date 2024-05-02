@@ -1,11 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
 
 import { RecoilRoot } from 'recoil';
 
-import './index.css'
-import router from './router'
+import './index.css';
+import router from './router';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <RecoilRoot>
@@ -15,4 +15,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </React.Suspense>
     </React.StrictMode>
   </RecoilRoot>,
-)
+);
