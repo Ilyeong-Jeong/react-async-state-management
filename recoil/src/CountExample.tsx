@@ -1,12 +1,13 @@
 // CountExample.tsx
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { countState } from './atom';
+import { countSelector, countState } from './atom';
 
 
 function CountExample() {
   const [count, setCount] = useRecoilState(countState);
   const countValue = useRecoilValue(countState);
   const setCountValue = useSetRecoilState(countState);
+  const [doubleCount, setDoubleCount] = useRecoilState(countSelector);
 
   return (
     <div>
@@ -18,6 +19,10 @@ function CountExample() {
       Count useRecoilValue, 
       <button onClick={() => setCountValue((count) => count + 1)}>
         count is {countValue}
+      </button>
+
+      <button onClick={() => setDoubleCount(count * 4)}>
+        count is {doubleCount}
       </button>
     </div>
   );
