@@ -8,6 +8,7 @@ import AsyncComponent from './AsyncComponent';
 import MultiAsyncComponent from './MultiAsyncComponent';
 import TodoList from './TodoList';
 import AddTodoList from './AddTodoList';
+import CountExample from './CountExample';
 
 function App() {
   const [count, setCount] = useRecoilState(countState);
@@ -39,6 +40,7 @@ function App() {
       <MultiAsyncComponent />
       <TodoList />
       <AddTodoList />
+      <CountExample />
     </>
   );
 }
